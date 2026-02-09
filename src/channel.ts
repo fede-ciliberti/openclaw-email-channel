@@ -429,10 +429,12 @@ export const emailPlugin: ChannelPlugin<ResolvedEmailAccount> = {
           log?.error(`[${account.accountId}] Email check error: ${error.message}`);
 
           // Attempt to reconnect on connection errors
+          const errMsg = error.message?.toLowerCase() || "";
           if (
-            error.message?.includes("connect") ||
-            error.message?.includes("socket") ||
-            error.message?.includes("ECONNRESET")
+            errMsg.includes("connect") ||
+            errMsg.includes("socket") ||
+            errMsg.includes("econnreset") ||
+            errMsg.includes("not available")
           ) {
             log?.info(`[${account.accountId}] Attempting IMAP reconnection...`);
             if (imapClient) {
