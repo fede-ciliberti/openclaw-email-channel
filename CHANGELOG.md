@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.1] - 2026-02-10
+
+### Fixed
+- **Case-insensitive IMAP reconnection** - Error message matching for `Connection not available` now uses case-insensitive comparison, preventing missed reconnection attempts
+
 ## [0.4.0] - 2026-02-07
 
 ### Added
